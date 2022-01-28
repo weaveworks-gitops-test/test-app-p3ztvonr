@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-5ujlpm
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-5ujlpm
+  namespace: my-nginx-5ujlpm
+  labels:
+    name: nginx-5ujlpm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-5ujlpm
+  template:
+    metadata:
+      namespace: my-nginx-5ujlpm
+      labels:
+        name: nginx-5ujlpm
+    spec:
+      containers:
+      - name: nginx-5ujlpm
+        image: nginx
+        ports:
+        - containerPort: 80
+
